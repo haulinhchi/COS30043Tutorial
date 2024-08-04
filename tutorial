@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>10.2HD Tutorial</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tutorial, Recipe Website, Single Page Application, SPA, VueJS">
+  <meta name="keywords" content="VueJS">
+  <meta name="author" content="Hau Linh Chi">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    h1,
+    h2,
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: bolder;
+    }
+
+    img {
+      width: 100%
+    }
+
+    .navul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .navli {
+      border: 0.5px solid #ccc;
+      padding: 1rem;
+      border-radius: 4px;
+      background-color: #fafafa;
+      cursor: pointer;
+    }
+
+    .navli:hover {
+      background-color: #dfdfdf;
+    }
+
+    .submenu {
+      margin-left: 1rem;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      /* 16:9 Aspect Ratio */
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .alink {
+      color: blue;
+      text-decoration: underline;
+    }
+
+    .content {
+      margin-bottom: 3rem;
+    }
+  </style>
+</head>
+
+<body class="container mt-5">
+
+  <!-- HEADER -->
+  <h1 class="text-center">10.2HD Tutorial</h1>
+  <hr>
+  <h2 class="text-center mt-5 mb-3">Tastebite Recipe-sharing Website</h2>
+  <img src="thumbnail.png" alt="Thumbnail image">
+
+  <div class="content row">
+    <!-- TABLE OF CONTENTS -->
+    <div class="col-md-4 col-lg-3" id="toc">
+      <h2 class="mt-5 mb-3">Table of Contents</h2>
+      <hr>
+      <ul class="navul">
+        <li class="mb-2 navli"><a href="#overview">I. Overview</a></li>
+        <li class="mb-2 navli"><a href="#what">II. What Are We Creating in This Tutorial?</a></li>
+        <li class="mb-2 navli submenu"><a href="#demovid">1. Demonstration Video</a></li>
+        <li class="mb-2 navli submenu"><a href="#keyfeatures">2. Key Features</a></li>
+        <li class="mb-2 navli"><a href="#topics">III. Specific Lecture Week Topics and Concepts Covered</a></li>
+        <li class="mb-2 navli"><a href="#setup">IV. Project Setup</a></li>
+        <li class="mb-2 navli"><a href="#folder">V. Folder Structure</a></li>
+        <li class="mb-2 navli"><a href="#implementation">VI. Implementation Steps</a></li>
+      </ul>
+    </div>
+    <div class="col-md-8 col-lg-9" id="maincontent">
+      <!-- OVERVIEW -->
+      <div id="overview">
+        <h2 class="mt-5 mb-3">I. Overview</h2>
+        <hr>
+        <p>In this blog post tutorial, we will create a recipe-sharing website using Vue.js and Bootstrap. For the
+          video, we will only focus on creating the login, signup and profile page in details. The website will feature
+          a clean, responsive, coherent design and include CRUD functionality for different entities. We will cover some
+          essential VueJS concepts from the 12 weeks of the COS30043 Interface Design and Development course such as
+          Model-View-ViewModel (MVVM) architectural pattern, data-binding, directives, component-based architecture,
+          passing data to child components with props, router, API and asynchronous data fetching.</p>
+        The website will feature a clean, responsive, coherent design and include CRUD functionality for different
+        entities. We will cover some essential VueJS concepts from the 12 weeks of the COS30043 Interface Design and
+        Development course such as Model-View-ViewModel (MVVM) architectural pattern, data-binding, directives,
+        component-based architecture, passing data to child components with props, router, API and asynchronous data
+        fetching.</p>
+      </div>
+
+      <!-- WHAT ARE WE CREATING IN THIS TUTORIAL? -->
+      <div id="what">
+        <h2 class="mt-5 mb-3">II. What Are We Creating in This Tutorial?</h2>
+        <hr>
+        <h3 class="mb-3" id="demovid">1. Demonstration Video</h3>
+        <div class="video-container mb-3">
+          <iframe src="https://www.youtube.com/embed/ptGThnGOSYY?si=AGakiEKoBWdpBqSR" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <p class="mb-5">Link youtube: <a class="alink" href="https://www.youtube.com/watch?v=ptGThnGOSYY"
+            target="_blank">https://www.youtube.com/watch?v=ptGThnGOSYY</a></p>
+        <h3 class="mb-3" id="keyfeatures">2. Key Features</h3>
+        <p>We are going to create a recipe website where users can:</p>
+        <ul>
+          <li>Create a new account</li>
+          <li>Log in</li>
+          <li>Browse categories</li>
+          <li>Browse all recipes or recipes by category</li>
+          <li>Search recipes by name</li>
+          <li>Filter recipes by prep time and servings</li>
+          <li>View recipe details (prep time, servings, ingredients, instructions)</li>
+          <li>Vote and unvote for recipes</li>
+          <li>Suggest and delete recipe ideas for the Tastebite team</li>
+          <li>Subscribe to the newsletter</li>
+        </ul>
+      </div>
+
+      <!-- SPECIFIC LECTURE WEEK TOPICS AND CONCEPTS COVERED -->
+      <div id="topics">
+        <h2 class="mt-5 mb-3">III. Specific Lecture Week Topics and Concepts Covered</h2>
+        <hr>
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseOne">
+                # Week 2: Layout and Grid System
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                Bootstrap CSS Framework
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseTwo">
+                # Week 3: VueJS Data Binding and Directives
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <ul>
+                  <li>Model-View-ViewModel (MVVM) architectural pattern</li>
+                  <li>Two-way data-binding</li>
+                  <li>Directive:
+                    <ul>
+                      <li>Model - Data/variable: v-bind, v-model, v-once</li>
+                      <li>View - Conditional: v-if, v-elseif, v-else, v-show</li>
+                      <li>View - Loop: v-for</li>
+                      <li>View - Function-like: v-on</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseThree">
+                # Week 4: View and ViewModel
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                View and ViewModel
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseFour">
+                # Week 5: Component and Router
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <ul>
+                  <li>Components</li>
+                  <li>Passing data to child components with props</li>
+                  <li>Custom directive</li>
+                  <li>Router</li>
+                  <li>Dynamic route with param</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseFive">
+                # Week 6: Form and Validation
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                Form validation using VueJS
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseSix">
+                # Week 7, 8: Application Programming Interface 1, 2
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <ul>
+                  <li>Request, insert, update and delete server data using API</li>
+                  <li>Asynchronous data fetching</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT SETUP -->
+      <div id="setup">
+        <h2 class="mt-5 mb-3">IV. Project Setup</h2>
+        <hr>
+        <h4>1. Download and run XAMPP</h4>
+        <ul>
+          <li>Download XAMPP from the <a class="alink" href="https://www.apachefriends.org/" target="_blank">official
+              website</a>.</li>
+          <li>Install and launch XAMPP.</li>
+          <li>Start the Apache (Web Server) and MySQL modules.</li>
+        </ul>
+        <h4>2. Download the necessary files</h4>
+        <ul>
+          <li>Go to <a class="alink"
+              href="https://drive.google.com/drive/folders/1VMVfoot_uSu4N-L8sx2Ka9FhvaYLDmJL?usp=drive_link"
+              target="_blank">this link</a> to download the necessary files for the project setup.</li>
+          <li>Place the downloaded files in the <code>XAMPP/htdocs/recipe-website</code> directory.</li>
+        </ul>
+        <h4>3. Set up database and tables</h4>
+        <ul>
+          <li>Copy the SQL queries from the <b><i>cos30043.sql</i></b> file.</li>
+          <li>Open your browser, go to <a class="alink" href="http://localhost/phpmyadmin/"
+              target="_blank">http://localhost/phpmyadmin/</a> and paste the queries into the SQL tab.</li>
+        </ul>
+        <h4>4. Run the code</h4>
+        <ul>
+          <li>Ensure that XAMPP's Apache (Web Server) and MySQL modules are running.</li>
+          <li>Open your browser and go to <a class="alink" href="http://localhost/recipe-website/#/"
+              target="_blank">http://localhost/recipe-website/#/</a>.</li>
+        </ul>
+        <h4>5. While developing</h4>
+        <ul style="list-style-type: none;">
+          <li>Reload the page whenever you change the code to see the updated results.</li>
+        </ul>
+        <br>
+        <h5><i>For log in test user account:</i></h5>
+        <ul>
+          <li>username: test</li>
+          <li>password: 1231231231</li>
+        </ul>
+      </div>
+
+      <!-- FOLDER STRUCTURE -->
+      <div id="folder">
+        <h2 class="mt-5 mb-3">V. Folder Structure</h2>
+        <hr>
+        <p>The structure of this project will looks like below, as you can see after downloading the provided necessary
+          files for the project setup:</p>
+        <code>
+          <pre>
+  recipe-website/
+  ├── css/
+  │   └── style.css
+  ├── img/
+  ├── js/
+  │   ├── components/                 // all Vue components
+  │   │   ├── app-nav.js              // navigation bar template
+  │   │   ├── app-footer.js           // footer template
+  │   │   └── ...                     // other components...
+  │   └── main.js                     // entry point for the application
+  ├── resources/                      // SQL queries, PHP files for API endpoints and settings
+  │   ├── api_category.php
+  │   ├── api_newsletter.php
+  │   ├── api_topcategories.php
+  │   ├── api_recipe.php
+  │   ├── api_signup.php
+  │   ├── api_suggestedrecipes.php
+  │   ├── api_tastebiteteam.php
+  │   ├── api_users.php
+  │   ├── api_votes.php
+  │   ├── settings.php                // database connection settings
+  │   └── cos30043.sql                // SQL queries for database setup and sample data
+  └── index.html                      // provides HTML structure, mounting point for Vue app
+          </pre>
+        </code>
+      </div>
+
+      <!-- IMPLEMENTATION STEPS -->
+      <div id="implementation">
+        <h2 class="mt-5 mb-3">VI. Implementation Steps</h2>
+        <hr>
+
+        <!-- YOUTUBE VIDEO -->
+        <p>This tutorial video is about how to write the login, signup and profile page in details.</p>
+        <div class="video-container mb-3">
+          <iframe src="https://www.youtube.com/embed/rkB0bCazSeE?si=f_5bruAFBlp3Pc3t" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <p class="mb-5">Link youtube: <a class="alink" href="https://www.youtube.com/watch?v=rkB0bCazSeE"
+            target="_blank">https://www.youtube.com/watch?v=rkB0bCazSeE</a></p>
+
+        <!-- PROJECT SETUP -->
+        <div>
+          <h4 class="mb-3">1. Open your project in you IDE (eg: VS Code)</h4>
+          <p>After downloaded the necessary files for project setup and opened it on your IDE, you project should look
+            like this.
+            <br>Now, we can start creating our recipe website!
+            <img src="prjsetup.png" alt="Project setup in IDE">
+          </p>
+        </div>
+
+        <!-- CREATE COMPONENT AND MODIFY main.js, index.html -->
+        <div>
+          <h4 class="mb-3">2. Define all pages and components</h4>
+          <h6>The website will contains 9 pages with the following components:</h6>
+          <ul>
+            <li><b>Home</b>:
+              <ul>
+                <li>Carousel of 5 random recipes</li>
+                <li>Popular categories section (top 6 categories having the most recipes)</li>
+                <li>Super delicious section (12 cards of random recipes)</li>
+                <li>Newsletter subscription section</li>
+              </ul>
+            </li>
+            <li><b>About</b>: Display all Tastebite team members</li>
+            <li><b>All categories</b>: Display all categories</li>
+            <li><b>Recipes of a categories</b>: Display all recipes that belong to a selected category</li>
+            <li><b>All recipes</b>: Display all recipes</li>
+            <li><b>Recipe details</b>:
+              <ul>
+                <li>Display prep time, servings, ingredients and instructions for a recipe</li>
+                <li>Vote, unvote the recipe</li>
+              </ul>
+            </li>
+            <li><b>Profile</b>:
+              <ul>Update profile information</ul>
+              <ul>View voted recipes tables</ul>
+              <ul>Suggest new recipe ideas for the Tastebite team and delete it</ul>
+            </li>
+            <li><b>Login</b></li>
+            <li><b>Signup</b></li>
+          </ul>
+        </div>
+
+        <!-- DEFINE ALL PAGES AND COMPONENTS -->
+        <div class="mt-5">
+          <h4 class="mb-3">3. Create components and define them in main.js and index.html</h4>
+          <h6>3.1. Create pages (components but with different naming convention to diffirentiate):</h6>
+          <ul>
+            <li>page-home.js</li>
+            <li>page-about.js</li>
+            <li>page-categories.js</li>
+            <li>page-category-recipes.js</li>
+            <li>page-recipes.js</li>
+            <li>page-recipedetails.js</li>
+            <li>page-profile.js</li>
+            <li>page-login.js</li>
+            <li>page-signup.js</li>
+          </ul>
+
+          <h6 class="mt-3">3.2. Create components:</h6>
+          <ul>
+            <li>app-carousel.js</li>
+            <li>app-category.js</li>
+            <li>app-recipe.js</li>
+            <li>app-topcategories.js</li>
+            <li>app-randomrecipes.js</li>
+            <li>app-newsletter.js</li>
+            <li>app-recipefilter.js</li>
+            <li>app-nav.js</li>
+            <li>app-footer.js</li>
+          </ul>
+
+          <img src="createcomponents.png" alt="Create pages and components">
+
+          <h6 class="mt-3">3.3. Define pages and components in main.js and index.html:</h6>
+
+          <img src="definecomponentsmain.png" alt="Define components in main.js">
+
+          <img src="definecomponentsindex.png" alt="Define components in index.html">
+        </div>
+
+        <!-- CREATE ROUTES TO DEFINE PATHS FOR USERS TO NAVIGATE WITHIN THE WEBSITE -->
+        <div class="mt-5">
+          <h4 class="mb-3">4. Create routes to define paths for users to navigate within the website</h4>
+          <h6>Define all routes for the website in main.js, each route will have a path and a component.</h6>
+          <p>The <code>props: true</code> means that route parameters will be passed as props to the component:</p>
+          <ul>
+            <li>From Category page (Categories) to Recipes of a categories page (CategoryRecipes):</li>
+            <li style="list-style-type: none;">The route parameters (categoryId, categoryName) will be automatically
+              passed as props to the
+              CategoryRecipes component.</li>
+            <li>From All recipes page (Recipes) or Recipes of a categories page (CategoryRecipes) to Recipe details page
+              (RecipeDetails):</li>
+            <li style="list-style-type: none;">The route parameters (recipeId, recipeName) will be automatically passed
+              as props to the
+              RecipeDetails component.</li>
+          </ul>
+          <p class="text-secondary"><i>! This will be easier to understand when we create the components later.</i></p>
+
+          <img src="createroutes.png" alt="Create routes">
+        </div>
+
+        <!-- CREATE CATEGORIES PAGE -->
+        <div class="mt-5">
+          <h4 class="mb-3">5. Create the categories page</h4>
+
+          <img src="categorypage.png" alt="Create the categories page">
+
+          <h6 class="mt-3">5.1. Create a single category</h6>
+          <ul>
+            <li>Create the template for a category using Bootstrap Card component with some modifications to make the
+              image rounded circle and no border.</li>
+            <li>As a category is a child component of the whole categories page, it will be passed the data using props
+            </li>
+          </ul>
+
+          <h6 class="mt-3">5.2. Create the whole categories page</h6>
+          <ul>
+            <li>The Categories page has the a single category created above as its component</li>
+            <li>Fetch all categories from the database to the categories array</li>
+            <li>Using v-for to loop the array to dislay the category</li>
+            <li>Data fetched will be passed to the Category child component (a single category) to bind the data</li>
+            <li>The template of the Categories page is used to add a title for the page and using Bootstrap Grid System
+              to display all the categories</li>
+          </ul>
+        </div>
+
+        <!-- CREATE TOP CATEGORIES COMPONENT -->
+        <div class="mt-5">
+          <h4 class="mb-3">6. Create the top categories component</h4>
+
+          <h6 class="mt-3">This will be used for the "Popular categories" section in the home page</h6>
+          <ul>
+            <li>All the categories and recipes count are fetched from the database</li>
+            <li>The fetched categories will be sorted by categories count in descending order and take the top 6</li>
+            <li>Data fetched will be passed to the Category child component (a single category) to bind the data</li>
+          </ul>
+        </div>
+
+        <!-- CREATE ALL RECIPES PAGE -->
+        <div class="mt-5">
+          <h4 class="mb-3">7. Create the all recipes page</h4>
+
+          <img src="allrecipespage.png" alt="Create the all recipes page">
+
+          <h6 class="mt-3">7.1. Create a single recipe card</h6>
+          <p>It is the same as the single category component.</p>
+
+          <h6 class="mt-3">7.2. Create the recipe search and filters</h6>
+          <ul>
+            <li>This component is also a child component of the All recipe page, it will also be passed the data using
+              props</li>
+            <li>It has a FilterChange() function to handle when the filter in the All recipe page is changed, it will
+              filter based on that input changes and emit the filtered recipes back to the parent component</li>
+          </ul>
+
+          <h6 class="mt-3">7.3. Create the whole recipes page</h6>
+          <p>It is generally the same as the categories page, however, there are some differences because of the recipe
+            filter:</p>
+          <ul>
+            <li>All the recipes are fetch from the database to the recipes array</li>
+            <li>This will be passed to the filter and will be filted out by the user input</li>
+            <li>This page has a handleFilterChange() function to handle updates to the list of filted recipes when a
+              filter change event occurs</li>
+            <li>The filteredRecipes are the array that takes all the filtered results emitted from the filter</li>
+            <li>The filtedRecipes array will be loop and all the recipes are displayed</li>
+            <li>They will be passed to the Recipe child component (a single recipe) to bind the data</li>
+            <li>The template of the All recipes page is used to add a title for the page, display both search and
+              filters and all recipes lists using Bootstrap Grid System</li>
+          </ul>
+        </div>
+
+        <!-- CREATE CATEGORY RECIPES PAGE -->
+        <div class="mt-5">
+          <h4 class="mb-3">8. Create the Recipes of a category page</h4>
+
+          <img src="catrecspage.png" alt="Create the Recipes of a category page">
+
+          <ul class="mt-3">
+            <li>The categoryName and categoryId from the Category page is passed to this page</li>
+            <li>The categoryId will be used to fetch all the data having that categoryId</li>
+            <li>It also has search and filters, so the remaining parts work the same as the All recipes page</li>
+          </ul>
+        </div>
+
+        <!-- CREATE THE RANDOM RECIPES COMPONENT -->
+        <div class="mt-5">
+          <h4 class="mb-3">9. Create the random recipes component</h4>
+
+          <h6 class="mt-3">This will be used for the "Super delicious" section in the home page and for the "You may
+            also like" section of the recipe details page</h6>
+          <ul>
+            <li>All the recipes are fetched from the database</li>
+            <li>The fetched data will be shuffled by a shuffleArray() function and get only the first 8 recipes to
+              displays</li>
+            <li>Data fetched will be passed to the Recipe child component (a single category) to bind the data</li>
+          </ul>
+        </div>
+
+        <!-- CREATE THE CAROUSEL COMPONENT -->
+        <div class="mt-5">
+          <h4 class="mb-3">10. Create the carousel component</h4>
+
+          <h6 class="mt-3">This will be used for the first section home page</h6>
+          <ul>
+            <li>All the recipes are fetched from the database</li>
+            <li>The fetched data will be shuffled by a shuffleArray() function and get only the first 5 recipes to
+              displays</li>
+            <li>Data fetched will be passed to the Recipe child component (a single category) to bind the data</li>
+            <li>The carousel is a Bootstrap component</li>
+          </ul>
+        </div>
+
+        <!-- CREATE RECIPE DETAILS PAGE -->
+        <div class="mt-5">
+          <h4 class="mb-3">11. Create the Recipe details page</h4>
+
+          <img src="recdetailspage.png" alt="Create the Recipe details page">
+
+          <ul class="mt-3">
+            <li>The recipeId from the previous page is passed to this page</li>
+            <li>The recipeId will be used to fetch all the data having that categoryId from the recipe, ingredients and
+              instructions tables</li>
+            <li>This page allows user to vote and unvote for the recipe.</li>
+            <li>It has a checkVoteExists() function to check whether or not the user voted for this recipes</li>
+            <li>After checking the vote existence by fetching data from the vote tables that having this userId and
+              receiving the results, it will allows user to vote and unvote</li>
+          </ul>
+        </div>
+
+        <!-- CREATE ABOUT PAGE -->
+        <div class="mt-5">
+          <h4 class="mb-3">12. Create the About page</h4>
+
+          <img src="aboutpage.png" alt="Create the About page">
+
+          <ul class="mt-3">
+            <li>All the Tastebite team members are fetched from the database into an array</li>
+            <li>The fetched data will be looped and displayed on the page</li>
+          </ul>
+        </div>
+
+        <!-- CREATE NEWSLETTER COMPONENT -->
+        <div class="mt-5">
+          <h4 class="mb-3">13. Create the newsletter component</h4>
+
+          <img src="aboutpage.png" alt="Create the About page">
+
+          <h6 class="mt-3">This will be used for the last section home page</h6>
+          <ul>
+            <li>All the subscribed emails are fetched from the database to check if the current email in the input form
+              already existed</li>
+            <li>If that email does not exist on the database, it will be sent to the database for newsletter
+              subscription</li>
+          </ul>
+        </div>
+
+        <!-- CREATE HOME PAGE -->
+        <div class="mt-5">
+          <h4 class="mb-3">14. Create the Home page</h4>
+
+          <img src="homepage.png" alt="Create the Home page">
+
+          <h6 class="mt-3">This page is only the container of components:</h6>
+          <ul>
+            <li>Carousel section: Carousel component</li>
+            <li>Popular categories section: Top categories component</li>
+            <li>Super delicious section: Random recipes component</li>
+            <li>Newsletter section: Newsletter component</li>
+          </ul>
+        </div>
+
+        <!-- CREATE LOGIN PAGE -->
+        <div class="mt-5">
+          <h4 class="mb-3">15. Create the Login page</h4>
+
+          <img src="login.png" alt="Create the Home page">
+
+          <ul>
+            <li>Validates the username and password</li>
+            <li>If validation passes, sends a POST request to resources/api_users.php/ with the username and password
+            </li>
+            <li>If the response is not okay or if there is no data, sets an error message</li>
+            <li>If the login is successful, stores the user data in local storage and redirects to the home page</li>
+          </ul>
+        </div>
+
+        <!-- CREATE SIGNUP PAGE -->
+        <div class="mt-5">
+          <h4 class="mb-3">16. Create the Signup page</h4>
+
+          <img src="signup.png" alt="Create the Signup page">
+
+          <ul>
+            <li>Validates the full name, username, email and password</li>
+            <li>If all validations pass, checks if the user already exists using checkUserExists() funtion</li>
+            <li>It sends a GET request to resources/api_users.php with the username and email as query parameters and
+              checks if the username or email already exists in the database</li>
+            <li>If the user does not exist, sends a POST request to resources/api_signup.php with the signup data</li>
+            <li>If the signup is successful, resets the input fields and displays a success message, then redirects to
+              the login page after 2 seconds</li>
+          </ul>
+        </div>
+
+        <!-- ADD MORE FUNTIONALITIES FOR THE NAVIGATION BAR -->
+        <div class="mt-5">
+          <h4 class="mb-3">17. Add more functionalities for the navigation bar</h4>
+
+          <ul>
+            <li>It checks whether or not the user is logged in</li>
+            <li>When clicking on the profile picture:
+              <ul>
+                <li>If they are logged in, they will be directed to the profile page</li>
+                <li>If they are not logged in, they will be directed to the login page</li>
+              </ul>
+            </li>
+            <li>The navigation bar also fetch the data from the local storage to get the userImg and username
+              information to bind to the profile image and display username</li>
+          </ul>
+        </div>
+
+        <!-- CREATE PROFILE PAGE -->
+        <div class="mt-5">
+          <h4 class="mb-3">18. Create the Signup page</h4>
+
+          <img src="profilepage.png" alt="Create the Profile page">
+
+          <ul>
+            <li>The user information are fetched from the local storage and bind into the update form</li>
+            <li>The voted recipes and suggested recipes are also fetched when user data is populated and display in the
+              two tables</li>
+            <li>From this page, the user can update their profile information after the form validate that the username
+              and email that user want to change do not exist on the database</li>
+            <li>There is also a suggested recipes form for user to add recipe ideas for the Tastebite team and they can
+              also delete them</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <!-- FOOTER -->
+  <hr>
+  <div class="row mt-3">
+    <div class="col text-center bg-light">
+      <p class="text-muted small mt-3">Hau Linh Chi - 104177160 - COS30043</p>
+    </div>
+  </div>
+
+  <button class="rounded-circle btn btn-dark btn-floating btn-lg" onclick="scrollToToc()"
+    style="position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
+    defer></script>
+  <script src="https://kit.fontawesome.com/f73039f1ad.js" crossorigin="anonymous"></script>
+  <script>
+    function scrollToToc() {
+      document.getElementById('toc').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+
+</html>
